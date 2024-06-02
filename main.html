@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Runs Tracker</title>
+    <link
+      rel="icon"
+      href="https://img.icons8.com/?size=160&id=rBH17l8J8TUt&format=png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.1/jquery.mobile.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/7e99a9e738.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+        body{
+    caret-color: transparent;
+    text-align: center;
+}
+
+#listitems{
+    margin: 0.4rem 1rem;
+    padding: 0.4rem 0.6rem;
+}
+
+.controls{
+    float: right;
+}
+
+#addKms, #editKms{
+    caret-color: black;
+}
+
+#stats p{
+    color: red;
+}
+
+.header{
+    font-size: 1.6rem !important;
+}
+
+.fa-person-running{
+    font-size: 1.5rem;
+    color: skyblue;
+}
+
+.socialMediaIcons i{
+    padding: 0rem 1rem;
+    cursor: pointer;
+}
+
+.socialMediaIcons a{
+    color: black !important;
+}
+
+.fa-linkedin:hover{
+    color: rgb(26, 92, 200);
+}
+
+.fa-envelope:hover{
+    color: red;
+}
+
+.fa-instagram:hover{
+    color: violet;
+}
+    </style>
+</head>
+<body>
+    <!-- Home page starts here -->
+    <div data-role="page" id="home">
+        <header data-role="header" data-theme="b">
+            <h1 class="header"><i class="fa-solid fa-person-running"></i> Runs<i><span style="color: skyblue;">T</span></i>racker</h1>
+        </header>
+        <nav data-role="navbar">
+            <ul>
+                <li><a href="#home" data-transition="none" data-icon="home">Home</a></li>
+                <li><a href="#add" data-transition="none" data-icon="plus">Add Runs</a></li>
+            </ul>
+        </nav>
+        <main data-role="content">
+            <h3>Welcome to the Runs<i>T</i>racker App!</h3>
+            <p>with this app you can track your running, jogging or walking km's</p>
+            <h3>Your Latest Runs</h3>
+            <ul id="stats" data-role="listview" data-filter="true" data-filter-placeholder="Filter runs by data or distance here..."></ul>
+            <br>
+            <button id="clearRuns" onclick="return confirm('Are you sure to clear all tracking activity ?')" data-theme="b">Clear all tracking activity</button>
+        </main>
+        <footer data-role="footer" data-theme="a">
+            <h4>RunsTracker | Mecheon &copy; 2024</h4>
+            <h4 class="socialMediaIcons">
+                <a href="https://www.linkedin.com/in/vamsim13538/" target="_blank" title="Vamsi M"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="mailto:m.vamsim23@gmail.com" target="_blank" title="m.vamsim23@gmail.com"><i class="fa-regular fa-envelope"></i></a>
+                <a href="https://www.instagram.com/vamsi_13_5_3_8/?hl=en" target="_blank" title="vamsi_13_5_3_8"><i class="fa-brands fa-instagram"></i></a>
+            </h4>
+        </footer>
+    </div>
+    <!-- Home page ends here -->
+
+    <!-- Add page starts here -->
+    <div data-role="page" id="add">
+        <header data-role="header" data-theme="b">
+            <h1>Runs Tracker</h1>
+        </header>
+        <nav data-role="navbar">
+            <ul>
+                <li><a href="#home" data-transition="none" data-icon="home">Home</a></li>
+                <li><a href="#add" data-transition="none" data-icon="plus">Add Runs</a></li>
+            </ul>
+        </nav>
+        <main data-role="content">
+           <h3>Add Runs</h3>
+           <form action="none" id="addForm">
+            <label for="addKms">Enter Km's </label>
+            <input type="text" id="addKms">
+            <label for="addDate">Enter Date </label>
+            <input type="date" id="addDate" class="date" data-role="date" data-inline="true">
+            <button type="submit" id="submitAdd" class="ui-btn ui-btn-b ui-corner-all">Submit</button>
+           </form>
+        </main>
+        <footer data-role="footer" data-theme="a">
+            <h4>RunsTracker | Mecheon &copy; 2024</h4>
+            <h4 class="socialMediaIcons">
+                <a href="https://www.linkedin.com/in/vamsim13538/" target="_blank" title="Vamsi M"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="mailto:m.vamsim23@gmail.com" target="_blank" title="m.vamsim23@gmail.com"><i class="fa-regular fa-envelope"></i></a>
+                <a href="https://www.instagram.com/vamsi_13_5_3_8/?hl=en" target="_blank" title="vamsi_13_5_3_8"><i class="fa-brands fa-instagram"></i></a>
+            </h4>
+        </footer>
+    </div>
+    <!-- Add page ends here -->
+
+    <!-- Edit page starts here -->
+    <div data-role="page" id="edit">
+        <header data-role="header" data-theme="b">
+            <h1>Runs Tracker</h1>
+        </header>
+        <nav data-role="navbar">
+            <ul>
+                <li><a href="#home" data-transition="none" data-icon="home">Home</a></li>
+                <li><a href="#add" data-transition="none" data-icon="plus">Add Runs</a></li>
+            </ul>
+        </nav>
+        <main data-role="content">
+           <h3>Edit Runs</h3>
+           <form action="none" id="editForm">
+            <label for="editKms">Enter Km's </label>
+            <input type="text" id="editKms">
+            <label for="editDate">Enter Date </label>
+            <input type="date" id="editDate" class="date" data-role="date" data-inline="true">
+            <button type="submit" id="submitEdit" class="ui-btn ui-btn-b ui-corner-all">Update Runs</button>
+           </form>
+        </main>
+        <footer data-role="footer" data-theme="a">
+            <h4>RunsTracker | Mecheon &copy; 2024</h4>
+            <h4 class="socialMediaIcons">
+                <a href="https://www.linkedin.com/in/vamsim13538/" target="_blank" title="Vamsi M"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="mailto:m.vamsim23@gmail.com" target="_blank" title="m.vamsim23@gmail.com"><i class="fa-regular fa-envelope"></i></a>
+                <a href="https://www.instagram.com/vamsi_13_5_3_8/?hl=en" target="_blank" title="vamsi_13_5_3_8"><i class="fa-brands fa-instagram"></i></a>
+            </h4>
+        </footer>
+    </div>
+    <!-- Edit page ends here -->
+
+    <script>
+        $(document).one('pageinit', function() {
+
+// Display runs on page initialization
+showRuns();
+
+// Add tap/click event on submit button in add page
+$('#submitAdd').on('tap', addRun);
+
+// edit tap/click event on update button in edit page
+$('#submitEdit').on('tap', editRun);
+
+// delete tap/click event on delete button in edit page
+$('#stats').on('tap', '#deleteLink', deleteRun);
+
+// clearRuns tap/click event on clear all activity button in home page
+$('#clearRuns').on('tap', clearRuns);
+
+// Set current handler
+$('#stats').on('tap', '#editLink', setCurrent);
+
+// Functionality for displaying runs
+function showRuns() {
+    // Get the runs object values from localStorage
+    var runs = getRunsObject();
+
+    // Check if the runs object is not empty
+    if (runs != null && runs.length > 0) {
+        for (let i = 0; i < runs.length; i++) {
+            $('#stats').append(
+                `<li id="listitems" class="ui-body-inherit ui-li-static">
+                    <strong>Date:</strong> ${runs[i].date}<br>
+                    <strong>Distance:</strong> ${runs[i].kms} km
+                    <div class="controls">
+                        <a id="editLink" href="#edit" data-kms="${runs[i].kms}" data-date="${runs[i].date}">Edit</a> | 
+                        <a href="#delete" id="deleteLink" onclick="return confirm('Are You sure to delete ?')" data-kms="${runs[i].kms}" data-date="${runs[i].date}">Delete</a>
+                    </div>
+                </li>`
+            );
+        }
+
+        // Refresh the list view after adding items
+        $('#stats').listview('refresh');
+    }else{
+        $('#stats').html(`<p>You have no logged runs!</p>`);
+    }
+}
+
+// Functionality for adding a run
+function addRun() {
+    // Initialize the variables
+    var kms = $('#addKms').val();
+    var date = $('#addDate').val();
+
+    // Validate the input fields
+    if (kms === '' || date === '') {
+        alert('Please enter all fields');
+        return false;
+    }
+
+    // Create a new object for collecting runs and date
+    var run = {
+        date: date,
+        kms: parseFloat(kms)
+    };
+
+    var runs = getRunsObject();
+
+    // Add run to runs
+    runs.push(run);
+
+    // Save the runs to localStorage in stringified format
+    localStorage.setItem('runs', JSON.stringify(runs));
+
+    // Notify the user of the successful addition
+    alert('Run added successfully!');
+
+    // Clear the input fields
+    $('#addKms').val('');
+    $('#addDate').val('');
+
+    // Redirect to home page
+    window.location.href = "index.html";
+
+    // Prevent the form from submitting
+    return false;
+}
+
+ // Functionality for editing a run
+ function editRun(){
+
+    // Get current data
+    currentKms = localStorage.getItem('currentKms');
+    currentDate = localStorage.getItem('currentDate');
+
+     var runs = getRunsObject();
+
+     // Loop through runs
+     for(let i=0; i<runs.length; i++){
+        if(runs[i].kms == currentKms && runs[i].date == currentDate){
+            runs.splice(i, 1);
+        }
+        localStorage.setItem('runs', JSON.stringify(runs));
+     }
+
+     // Initialize the variables
+     var kms = $('#editKms').val();
+     var date = $('#editDate').val();
+
+     // Create a new object for collecting runs and date
+    var update_run = {
+        date: date,
+        kms: parseFloat(kms)
+    };
+
+    // Add run to runs
+    runs.push(update_run);
+
+    // Save the runs to localStorage in stringified format
+    localStorage.setItem('runs', JSON.stringify(runs));
+
+    // Notify the user of the successful addition
+    alert('Runs Updated successfully!');
+
+    // Redirect to home page
+    window.location.href = "index.html";
+
+    // Prevent the form from submitting
+    return false;
+
+ }
+
+ // Functionallity for deleting run
+ function deleteRun(){
+
+    // Set localstorage items
+    localStorage.setItem('currentKms', $(this).data('kms'));
+    localStorage.setItem('currentDate', $(this).data('date'))
+
+    // Get current data
+    currentKms = localStorage.getItem('currentKms');
+    currentDate = localStorage.getItem('currentDate');
+
+     var runs = getRunsObject();
+
+     // Loop through runs
+     for(let i=0; i<runs.length; i++){
+        if(runs[i].kms == currentKms && runs[i].date == currentDate){
+            runs.splice(i, 1);
+        }
+        localStorage.setItem('runs', JSON.stringify(runs));
+     }
+
+    // Notify the user of the successful deletion
+    alert('Runs Deleted successfully!');
+
+    // Redirect to home page
+    window.location.href = "index.html";
+
+    // Prevent the form from submitting
+    return false;
+
+ }
+
+ function clearRuns(){
+    localStorage.removeItem('runs');
+    $('#stats').html(`<p>You have no logged runs!</p>`);
+ }
+
+// Get runs object from localStorage
+function getRunsObject() {
+    // Set runs array
+    var runs = [];
+
+    // Get current runs from localStorage
+    var currentRuns = localStorage.getItem('runs');
+
+    // Check if runs are present in localStorage
+    if (currentRuns != null) {
+        // Parse and set runs
+        runs = JSON.parse(currentRuns);
+    }
+
+    // Return runs in the latest order
+    return runs.sort(function(a, b) {
+        return new Date(b.date) - new Date(a.date);
+    });
+}
+
+// Set the current clicked kms & date
+function setCurrent(){
+    // Set localstorage items
+    localStorage.setItem('currentKms', $(this).data('kms'));
+    localStorage.setItem('currentDate', $(this).data('date'))
+
+    // Insert form input fields
+    $('#editKms').val(localStorage.getItem('currentKms'));
+    $('#editDate').val(localStorage.getItem('currentDate'));
+}
+
+});
+
+    </script>
+</body>
+</html>

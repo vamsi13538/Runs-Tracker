@@ -1,0 +1,51 @@
+body{
+    caret-color: transparent;
+    text-align: center;
+}
+
+#listitems{
+    margin: 0.4rem 1rem;
+    padding: 0.4rem 0.6rem;
+}
+
+.controls{
+    float: right;
+}
+
+#addKms, #editKms{
+    caret-color: black;
+}
+
+#stats p{
+    color: red;
+}
+
+.header{
+    font-size: 1.6rem !important;
+}
+
+.fa-person-running{
+    font-size: 1.5rem;
+    color: skyblue;
+}
+
+.socialMediaIcons i{
+    padding: 0rem 1rem;
+    cursor: pointer;
+}
+
+.socialMediaIcons a{
+    color: black !important;
+}
+
+.fa-linkedin:hover{
+    color: rgb(26, 92, 200);
+}
+
+.fa-envelope:hover{
+    color: red;
+}
+
+.fa-instagram:hover{
+    color: violet;
+}

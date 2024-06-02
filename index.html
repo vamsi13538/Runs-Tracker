@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Runs Tracker</title>
+    <link
+      rel="icon"
+      href="https://img.icons8.com/?size=160&id=rBH17l8J8TUt&format=png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.1/jquery.mobile.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/7e99a9e738.js"
+      crossorigin="anonymous"
+    ></script>
+</head>
+<body>
+    <!-- Home page starts here -->
+    <div data-role="page" id="home">
+        <header data-role="header" data-theme="b">
+            <h1 class="header"><i class="fa-solid fa-person-running"></i> Runs<i><span style="color: skyblue;">T</span></i>racker</h1>
+        </header>
+        <nav data-role="navbar">
+            <ul>
+                <li><a href="#home" data-transition="none" data-icon="home">Home</a></li>
+                <li><a href="#add" data-transition="none" data-icon="plus">Add Runs</a></li>
+            </ul>
+        </nav>
+        <main data-role="content">
+            <h3>Welcome to the Runs<i>T</i>racker App!</h3>
+            <p>with this app you can track your running, jogging or walking km's</p>
+            <h3>Your Latest Runs</h3>
+            <ul id="stats" data-role="listview" data-filter="true" data-filter-placeholder="Filter runs by data or distance here..."></ul>
+            <br>
+            <button id="clearRuns" onclick="return confirm('Are you sure to clear all tracking activity ?')" data-theme="b">Clear all tracking activity</button>
+        </main>
+        <footer data-role="footer" data-theme="a">
+            <h4>RunsTracker | Mecheon &copy; 2024</h4>
+            <h4 class="socialMediaIcons">
+                <a href="https://www.linkedin.com/in/vamsim13538/" target="_blank" title="Vamsi M"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="mailto:m.vamsim23@gmail.com" target="_blank" title="m.vamsim23@gmail.com"><i class="fa-regular fa-envelope"></i></a>
+                <a href="https://www.instagram.com/vamsi_13_5_3_8/?hl=en" target="_blank" title="vamsi_13_5_3_8"><i class="fa-brands fa-instagram"></i></a>
+            </h4>
+        </footer>
+    </div>
+    <!-- Home page ends here -->
+
+    <!-- Add page starts here -->
+    <div data-role="page" id="add">
+        <header data-role="header" data-theme="b">
+            <h1>Runs Tracker</h1>
+        </header>
+        <nav data-role="navbar">
+            <ul>
+                <li><a href="#home" data-transition="none" data-icon="home">Home</a></li>
+                <li><a href="#add" data-transition="none" data-icon="plus">Add Runs</a></li>
+            </ul>
+        </nav>
+        <main data-role="content">
+           <h3>Add Runs</h3>
+           <form action="none" id="addForm">
+            <label for="addKms">Enter Km's </label>
+            <input type="text" id="addKms">
+            <label for="addDate">Enter Date </label>
+            <input type="date" id="addDate" class="date" data-role="date" data-inline="true">
+            <button type="submit" id="submitAdd" class="ui-btn ui-btn-b ui-corner-all">Submit</button>
+           </form>
+        </main>
+        <footer data-role="footer" data-theme="a">
+            <h4>RunsTracker | Mecheon &copy; 2024</h4>
+            <h4 class="socialMediaIcons">
+                <a href="https://www.linkedin.com/in/vamsim13538/" target="_blank" title="Vamsi M"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="mailto:m.vamsim23@gmail.com" target="_blank" title="m.vamsim23@gmail.com"><i class="fa-regular fa-envelope"></i></a>
+                <a href="https://www.instagram.com/vamsi_13_5_3_8/?hl=en" target="_blank" title="vamsi_13_5_3_8"><i class="fa-brands fa-instagram"></i></a>
+            </h4>
+        </footer>
+    </div>
+    <!-- Add page ends here -->
+
+    <!-- Edit page starts here -->
+    <div data-role="page" id="edit">
+        <header data-role="header" data-theme="b">
+            <h1>Runs Tracker</h1>
+        </header>
+        <nav data-role="navbar">
+            <ul>
+                <li><a href="#home" data-transition="none" data-icon="home">Home</a></li>
+                <li><a href="#add" data-transition="none" data-icon="plus">Add Runs</a></li>
+            </ul>
+        </nav>
+        <main data-role="content">
+           <h3>Edit Runs</h3>
+           <form action="none" id="editForm">
+            <label for="editKms">Enter Km's </label>
+            <input type="text" id="editKms">
+            <label for="editDate">Enter Date </label>
+            <input type="date" id="editDate" class="date" data-role="date" data-inline="true">
+            <button type="submit" id="submitEdit" class="ui-btn ui-btn-b ui-corner-all">Update Runs</button>
+           </form>
+        </main>
+        <footer data-role="footer" data-theme="a">
+            <h4>RunsTracker | Mecheon &copy; 2024</h4>
+            <h4 class="socialMediaIcons">
+                <a href="https://www.linkedin.com/in/vamsim13538/" target="_blank" title="Vamsi M"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="mailto:m.vamsim23@gmail.com" target="_blank" title="m.vamsim23@gmail.com"><i class="fa-regular fa-envelope"></i></a>
+                <a href="https://www.instagram.com/vamsi_13_5_3_8/?hl=en" target="_blank" title="vamsi_13_5_3_8"><i class="fa-brands fa-instagram"></i></a>
+            </h4>
+        </footer>
+    </div>
+    <!-- Edit page ends here -->
+
+    <script src="main.js"></script>
+</body>
+</html>
